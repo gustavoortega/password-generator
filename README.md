@@ -4,21 +4,34 @@
 
 <h1>Instructions for containerized usage</h1>
 
-git clone https://github.com/gustavoortega/urlscan-api-wrapper.git
+```
+git clone https://github.com/gustavoortega/password-generator.git
 
-cd urlscan-api-wrapper/
+cd password-generator/
 
-docker build -t local:urlscan .
+docker build -t local:wildlife .
 
-docker run --rm -it local:urlscan --url "https://www.example.com/" --urlscankey "apikey"  --s3bucketname "bucketName" --visibility "choosefrom:public/private/unlisted"
+docker run --rm -it -p 5000:5000 local:wildlife
+```
+
+Now, it's time to use it!
+```
+curl 'http://localhost:5000/generate-password?lowercase=10&uppercase=10&digits=10&length=50' 
+
+{"password": "VoxDuyPHJjo0yw4sWBe4gdbSVAz9k4cv5toA3HOM5w6XRieuY7"}
+
+```
 
 
 <h1>Instructions for usage on local machine</h1>
 
-git clone https://github.com/gustavoortega/urlscan-api-wrapper.git
+```
 
-cd urlscan-api-wrapper/
+git clone https://github.com/gustavoortega/password-generator.git
+
+cd password-generator/
 
 pip3 install -r ./requirements.txt
 
-python3 ./urlscan-api-wrapper.py --url "https://www.example.com/" --urlscankey "apikey"  --s3bucketname "bucketName" --visibility "choosefrom:public/private/unlisted"
+python3 ./main.py
+```
