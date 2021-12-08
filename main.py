@@ -4,10 +4,10 @@ import string, secrets, json
 
 app = Flask(__name__)
 
-def generate_random_password(lenght, lowercase, uppercase, digits):
+def generate_random_password(length, lowercase, uppercase, digits):
     alphabet = string.ascii_letters + string.digits
     while True:
-        password = ''.join(secrets.choice(alphabet) for i in range(lenght))
+        password = ''.join(secrets.choice(alphabet) for i in range(length))
         if (
                 sum(c.islower() for c in password) >= lowercase
                 and sum(c.isupper() for c in password) >= uppercase
@@ -27,7 +27,7 @@ def help():
 @app.route("/generate-password")
 def generate_password():
     try:
-        lenght = int(request.args.get('lenght'))
+        length = int(request.args.get('length'))
         lowercase = int(request.args.get('lowercase'))
         uppercase = int(request.args.get('uppercase'))
         digits = int(request.args.get('digits'))
@@ -36,12 +36,12 @@ def generate_password():
         abort(500)
 
     #Enforce password policy
-    if ((lenght < 20) or (lowercase < 10) or (uppercase < 10) or (digits < 10)):
+    if ((length < 20) or (lowercase < 10) or (uppercase < 10) or (digits < 10)):
         print(f'bad password policy!')
         abort(403)
     else:
         try:
-            return(generate_random_password(lenght, lowercase, uppercase, digits))
+            return(generate_random_password(length, lowercase, uppercase, digits))
         except:
             abort(500)
     
