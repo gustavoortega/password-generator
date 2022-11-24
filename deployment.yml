@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: appdeploy
-        image: wildlife
+        image: password
         imagePullPolicy: Never
         ports:
         - containerPort: 5000
