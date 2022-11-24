@@ -9,9 +9,9 @@ git clone https://github.com/gustavoortega/password-generator.git
 
 cd password-generator/
 
-docker build -t local:wildlife .
+docker build -t local:password .
 
-docker run --rm -it -p 5000:5000 local:wildlife
+docker run --rm -it -p 5000:5000 local:password
 ```
 
 Now, it's time to use it!
